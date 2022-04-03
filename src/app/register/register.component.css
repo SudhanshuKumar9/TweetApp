@@ -1,0 +1,42 @@
+.register{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+.left{
+    background-color: var(--twitter-color);
+}
+
+.left-content{
+    margin-top: 250px;
+    margin-left: 200px;
+}
+
+.first-buuton{
+    margin-top: 500px;
+    margin-left: 250px;
+}
+
+.btn-login, .btn-signup{
+    width: 250px;
+    font-weight: 800;
+    font-size: 20px;
+    background-color: white;
+    color:  var(--twitter-color);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(0,0,0,0.5);
+    padding: 5px;
+    text-align: center;
+}
+
+.btn-login:hover, .btn-signup:hover{
+    background-color: var(--twitter-color);
+    color: var(--twitter-background);
+    box-shadow: none;
+}
+
+.second-button{
+    margin-top: 20px;
+    margin-left: 250px;
+}

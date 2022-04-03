@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tweet-app';
+  textInput = '';
+
+  onChange(event: Event){
+    this.textInput= (<HTMLInputElement>event.target).value;
+  }
 }
