@@ -13,12 +13,14 @@ export class EditTweetComponent implements OnInit {
   @ViewChild('f') editForm: NgForm;
   tweetItem : Tweet;
   tweetId : string;
+  editedText : string = '';
   constructor(private tweetService: TweetService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((param : Params) =>{
       this.tweetId = param['id'];
       this.tweetItem = this.tweetService.getTweetById(this.tweetId);
+      this.editedText = this.tweetItem.tweetText;
     });
   }
 
