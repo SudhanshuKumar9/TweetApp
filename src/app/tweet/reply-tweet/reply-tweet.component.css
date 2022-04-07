@@ -20,6 +20,10 @@ button[disabled]:hover{
     bottom: 6px;
 }
 
+.invalid-input{
+    color: red;
+}
+
 .valid-input{
     color: #0b99f1;
 }

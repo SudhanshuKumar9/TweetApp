@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Reply } from '../reply.model';
 import { Tweet } from '../tweet.model';
 
@@ -9,9 +10,13 @@ import { Tweet } from '../tweet.model';
 })
 export class TweetItemsComponent implements OnInit {
   @Input() tweet: Tweet;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    this.router.navigate(['tweetapp/reply']);
   }
 
 }

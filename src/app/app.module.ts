@@ -13,6 +13,10 @@ import { TweetItemsComponent } from './tweet/tweet-items/tweet-items.component';
 import { PostTweetComponent } from './tweet/post-tweet/post-tweet.component';
 import { TweetService } from './tweet/tweet.service';
 import { CommonService } from './common.service';
+import { UserService } from './user/user.service';
+import { ReplyTweetComponent } from './tweet/reply-tweet/reply-tweet.component';
+import { EditTweetComponent } from './tweet/edit-tweet/edit-tweet.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,16 @@ import { CommonService } from './common.service';
     UserComponent,
     TweetItemsComponent,
     PostTweetComponent,
+    ReplyTweetComponent,
+    EditTweetComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
-  providers: [TweetService, CommonService],
+  providers: [TweetService, CommonService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

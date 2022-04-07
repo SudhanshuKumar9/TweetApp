@@ -24,12 +24,18 @@
     </div>
 
     <div class="post__footer">
-      <span class="material-icons footer-icons"> question_answer </span>
+      <span class="material-icons footer-icons" [routerLink]="['reply', tweet.tweetId]"> question_answer </span>
       <div>
         <span class="material-icons footer-icons"> favorite_border</span>
         <span class="tweet-like">{{ tweet.likes }}</span>
       </div>
-      <span class="material-icons footer-icons"> expand_more </span>
+      <div class="dropdown">
+       <span class="material-icons footer-icons"> expand_more </span>
+        <div class="dropdown-content">
+        <a [routerLink]="['edit', tweet.tweetId]">Edit</a>
+        <a>Delete</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
