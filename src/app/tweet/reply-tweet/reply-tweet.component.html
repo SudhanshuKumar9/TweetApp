@@ -5,7 +5,7 @@
     <div class="post">
         <div class="post__avatar">
           <img
-            src="../../assets/profile.png"
+            src="../../assets/profile.jpg"
             alt=""
           />
         </div>
@@ -14,11 +14,11 @@
           <div class="post__header">
             <div class="post__headerText">
               <h3>
-                Somanath Goudar
+                {{ tweet?.firstName }} {{ tweet?.lastName }}
                 <span class="post__headerSpecial"
                   ><span class="material-icons post__badge"> verified </span>{{ tweet?.userId }}</span
                 >
-                <span style="position: relative; float: right;">{{ tweet?.dateAndTimeOfTweet }}</span>
+                <span style="position: relative; float: right;">{{ tweet?.dateAndTimeOfTweet | date :'short' }}</span>
               </h3>
               
             </div>
@@ -32,7 +32,7 @@
         <form (ngSubmit) = "onReply()" #f="ngForm">
             <div class="tweetbox__input">
                 <img
-                src="../../assets/profile.png"
+                src="../../assets/profile.jpg"
                 alt=""
                 />
                 <textarea 
@@ -51,14 +51,14 @@
             [disabled]="!f.valid">Reply</button>
         </form>
         <div class="indicator">
-            <span class="replylength-indicator valid-input">{{ replyText?.value?.length }}/144</span>
+            <span class="replylength-indicator valid-input">{{ replyText?.value?.length ? replyText?.value?.length : 0 }}/144</span>
         </div>
     </div>
     <div class="post">
         <h4>Replies</h4>
     </div>
     <div class="post" 
-    *ngFor="let tweetReply of tweet.replies">
+    *ngFor="let tweetReply of tweet?.replies">
         <div class="post__avatar">
           <img
             src="../../assets/profile.png"
@@ -70,16 +70,16 @@
           <div class="post__header">
             <div class="post__headerText">
               <h3>
-                Somanath Goudar
+                {{ tweetReply.firstName }} {{ tweetReply.lastName }}
                 <span class="post__headerSpecial"
                   ><span class="material-icons post__badge"> verified </span>{{ tweetReply.userId }}</span
                 >
-                <span style="position: relative; float: right;">{{ tweetReply.dateAndTimeOfReply }}</span>
+                <span style="position: relative; float: right;">{{ tweetReply.dateAndTimeOfReply | date :'short' }}</span>
               </h3>
               
             </div>
             <div class="post__headerDescription">
-              <p>{{ tweetReply.text }}</p>
+              <p>{{ tweetReply.replyText }}</p>
             </div>
           </div>
       </div>

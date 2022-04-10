@@ -23,21 +23,21 @@ export class ReplyTweetComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(
       (param: Params) =>{
         this.id = param['id'];
-        let val = this.tweetService.getTweetById(this.id);
-        this.tweet =  val;
-        this.reply = val != undefined ? val.replies.length > 0 : false;
+        this.tweetService.getTweetById(this.id);
       }
     );
 
     this.isChanges =  this.tweetService.tweetChanged.subscribe((tweetUpdated) => {
       this.tweet = tweetUpdated;
+      this.reply = tweetUpdated != undefined ? tweetUpdated.replies.length > 0 : false;
     });
   }
 
   onReply(){
     const value = this.form.value;
-    const reply = new Reply(value.replyText,this.tweet.userId, new Date());
+    const reply = new Reply(value.replyText);
     this.tweetService.addReply(reply, this.id);
+    this.form.reset();
   }
 
 

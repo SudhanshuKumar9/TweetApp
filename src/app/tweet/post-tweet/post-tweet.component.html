@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div class="tweetbox__input">
             <img
-            src="../../assets/profile.png"
+            src="../../assets/profile.jpg"
             alt=""
             />
             <textarea 
@@ -19,6 +19,6 @@
         <button class="tweetBox__tweetButton" [disabled]="!tweetText.valid">Tweet</button>
     </form>
     <div class="indicator">
-        <span class="replylength-indicator valid-input">0/144</span>
+        <span class="replylength-indicator valid-input">{{ tweetText?.value?.length ? tweetText?.value?.length : 0 }}/144</span>
     </div>
 </div>

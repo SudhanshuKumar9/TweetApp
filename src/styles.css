@@ -7,6 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }  */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
   }
   
   body {
@@ -172,3 +173,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }  */
     font-weight: bold;
     color: var(--twitter-color);
   }
+
+  input.ng-invalid.ng-touched{
+    border: 1px solid red;
+  } 

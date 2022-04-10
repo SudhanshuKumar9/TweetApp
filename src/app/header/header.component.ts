@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../common.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
+import { ViewUser } from '../user/view-user.model';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   menuOptions = [{icon: "home", labelName: "Home"}, 
   {icon: "search", labelName: "Search"},
   {icon: "notifications_none", labelName: "Notifications"},
@@ -16,13 +19,28 @@ export class HeaderComponent implements OnInit {
   {icon: "perm_identity", labelName: "Profiles"},
   {icon: "more_horiz", labelName: "More"}
 ]
-  constructor(private commonService: CommonService) { }
-
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
+  user : ViewUser | null;
+  userId: string | null;
+  authSubscription : Subscription;
   ngOnInit(): void {
+    this.authSubscription = this.authService.userDetail.subscribe((user) => {
+      this.user = user;
+    })
+    this.userId = localStorage.getItem('user');
   }
 
   onSelect(value: string){
-    this.commonService.selectedValue.emit(value);
+    this.authService.selectedValue.emit(value);
+  }
+
+  onLogout(){
+    this.authService.logout();
+    this.router.navigate(['tweetapp']);
+  }
+
+  ngOnDestroy(){
+    this.authSubscription.unsubscribe();
   }
 
 }

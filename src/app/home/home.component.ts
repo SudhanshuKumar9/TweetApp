@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../common.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,9 @@ import { CommonService } from '../common.service';
 })
 export class HomeComponent implements OnInit {
   currentSelected : string = 'Home';
-  constructor(private commonService: CommonService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.commonService.selectedValue.subscribe(
-      (value : string) =>{
-        this.currentSelected = value;
-      }
-    );
   }
 
 }

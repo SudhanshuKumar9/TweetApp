@@ -1,13 +1,12 @@
 export class User{
-    public id: string;
-    public userId: string;
-    public dateOfBirth: Date;
-    public gender: string;
-
-    constructor(id: string,userId: string, dateOfBirth: Date, gender: string){
-        this.id = id;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.userId = userId;
+    constructor(public emailId: string, 
+        public dateOfBirth: Date, 
+        public gender: string, 
+        public password: string, 
+        public confirmPassword: string, 
+        public firstName: string, 
+        public lastName: string,
+        public securityQuestion: number,
+        public securityAnswer: string){
     }
 }

@@ -12,11 +12,17 @@ import { UserComponent } from './user/user.component';
 import { TweetItemsComponent } from './tweet/tweet-items/tweet-items.component';
 import { PostTweetComponent } from './tweet/post-tweet/post-tweet.component';
 import { TweetService } from './tweet/tweet.service';
-import { CommonService } from './common.service';
+import { AuthService } from './auth.service';
 import { UserService } from './user/user.service';
 import { ReplyTweetComponent } from './tweet/reply-tweet/reply-tweet.component';
 import { EditTweetComponent } from './tweet/edit-tweet/edit-tweet.component';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { AuthGuard } from './auth-guard';
+import { MyTweetsComponent } from './tweet/my-tweets/my-tweets.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ResetPasswordComponent } from './register/reset-password/reset-password.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,19 @@ import { FormsModule } from '@angular/forms';
     PostTweetComponent,
     ReplyTweetComponent,
     EditTweetComponent,
+    MyTweetsComponent,
+    ProfileComponent,
+    ResetPasswordComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [TweetService, CommonService, UserService],
+  providers: [HttpClientModule, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
